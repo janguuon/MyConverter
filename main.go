@@ -216,6 +216,17 @@ func main() {
 
 			fmt.Printf("Successfully created PDF file: %s\n", outputFile)
 
+		case ".txt":
+			// Create text writer
+			textWriter := writers.NewTextWriter(outputDir)
+			err = textWriter.WriteTexts(outputFile, content.Text)
+			if err != nil {
+				fmt.Printf("Error creating text file: %v\n", err)
+				return
+			}
+
+			fmt.Printf("Successfully created text file: %s\n", outputFile)
+
 		default:
 			fmt.Printf("Unsupported output format: %s\n", ext)
 		}
